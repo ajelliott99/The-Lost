@@ -11,9 +11,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - Floor
+  - Collidable
   - 
   - 
   - 
@@ -46,4 +46,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3359460643
+    locked: 0
+  - name: Collidable
+    uniqueID: 924434791
     locked: 0
