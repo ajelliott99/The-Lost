@@ -5,6 +5,9 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
 
+    public float EnemyProjDamage = 10f;
+    public float PlayerProjDamage = 10f;
+
     // Update is called once per frame
     void Update()
     {
@@ -13,14 +16,20 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        GameObject temp = collision.gameObject;
-        GameObject other = collision.otherCollider.gameObject;
-        if (temp.tag == "Enemy")
+        GameObject other = collision.gameObject;
+        GameObject projectile = collision.otherCollider.gameObject;
+        if (other.tag == "Enemy")
         {
             Debug.Log("Enemy detected.");
-            Destroy(temp);
+            Destroy(projectile);
+        }else if(other.tag == "Player" && projectile.tag == "EnemyProjectile")
+        {
+            Debug.Log("Player detected.");
+            Destroy(projectile);
+
+            other.GetComponent<PlayerController>().TakeDamage(EnemyProjDamage);
         }
 
-        Destroy(other);
+        
     }
 }

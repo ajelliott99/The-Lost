@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+
+    public GameObject healthBar;
+    private Slider healthSlider;
+    private float playerHealth;
+    
     private Vector3 move;
     private float deltaX;
     private float deltaY;
@@ -13,6 +19,8 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
+        playerHealth = 100f;
+        healthSlider = healthBar.GetComponentInChildren<Slider>();
     }
 
     private void Update()
@@ -44,5 +52,12 @@ public class PlayerController : MonoBehaviour
             transform.Translate(move.x * Time.deltaTime, 0, 0);
         }
 
+        healthSlider.value = playerHealth;
+
+    }
+
+    public void TakeDamage(float damage)
+    {
+        playerHealth -= damage;
     }
 }
