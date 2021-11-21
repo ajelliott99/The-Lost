@@ -8,6 +8,12 @@ public class WeaponController : MonoBehaviour
     public GameObject projectilePrefab;
 
     private GameObject projectile;
+    private Rigidbody2D rb;
+
+    private void Start()
+    {
+        
+    }
 
     private void Update()
     {
@@ -22,7 +28,13 @@ public class WeaponController : MonoBehaviour
     {
         projectile = Instantiate<GameObject>(projectilePrefab);
         projectile.transform.position = new Vector3(transform.position.x, transform.position.y + 0.15f, 0);
-        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector3(0, 1, 0) * projectileSpeed;
+
+        rb = projectile.GetComponent<Rigidbody2D>();
+
+        Vector3 worldpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        float moveX = worldpos.x - transform.position.x;
+        float moveY = worldpos.y - transform.position.y;
+
+        rb.velocity = new Vector3(moveX, moveY, 0) * projectileSpeed;
     }
 }

@@ -8,11 +8,14 @@ public class EnemyController : MonoBehaviour
     public GameObject projectilePrefab;
     public GameObject player;
 
+    private float health;
+
     private GameObject projectile;
 
     // Start is called before the first frame update
     void Start()
     {
+        health = 30f;
         StartCoroutine(fire());
     }
 
@@ -29,5 +32,15 @@ public class EnemyController : MonoBehaviour
             yield return new WaitForSecondsRealtime(2);
         }
         
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 688080224105124614}
   m_Layer: 9
   m_Name: Temp_Projectile0
-  m_TagString: Projectiles
+  m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,3 +144,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd9bdcb5ef6a8234c961e44e7f158bb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyProjDamage: 10
+  PlayerProjDamage: 10
